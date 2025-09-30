@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real World Case Study 2025</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            background: #f4f7fa;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Professional Navigation with Slide-In Animation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: slideDownNav 1s ease-out;
+        }
+
+        @keyframes slideDownNav {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        nav a {
+            color: #004aad;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero Section with Subtle Parallax and Text Animation */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #004aad, #002b5e);
+            color: #fff;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080?text=Professional+Competition+BG') no-repeat center/cover;
+            opacity: 0.3;
+            animation: subtleParallax 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes subtleParallax {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5%) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0 0 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInScale 1.5s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin: 0 0 30px;
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            background: #d4af37;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            animation: bounceIn 1.5s ease-out 1.5s forwards;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            60% { opacity: 1; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-btn:hover {
+            background: #b8962e;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section with Card Animation */
+        .about {
+            padding: 100px 20px;
+            background: #ffffff;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .about.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #004aad;
+            font-weight: 700;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .competitive-tease {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tease-card {
+            background: #f4f7fa;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .tease-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tease-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .tease-card h3 {
+            color: #004aad;
+            margin-bottom: 15px;
+        }
+
+        /* Speakers Section with Staggered Entrances */
+        .speakers {
+            padding: 100px 20px;
+            background: #f4f7fa;
+            text-align: center;
+        }
+
+        .speakers h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #004aad;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .speaker-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .speaker-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .speaker-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .speaker-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 2px solid #d4af37;
+            transition: transform 0.3s ease;
+        }
+
+        .speaker-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .speaker-card h3 {
+            color: #004aad;
+            margin-bottom: 10px;
+        }
+
+        .speaker-card p {
+            color: #666;
+        }
+
+        /* Leaderboard Section with Slide-In Rows */
+        .leaderboard {
+            padding: 100px 20px;
+            background: #ffffff;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .leaderboard h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #004aad;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .leaderboard-table {
+            background: #f4f7fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .leaderboard-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
+        }
+
+        .leaderboard-row.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .leaderboard-row:hover {
+            background: #e9ecef;
+        }
+
+        .leaderboard-row:last-child {
+            border-bottom: none;
+        }
+
+        .leaderboard-rank, .leaderboard-name, .leaderboard-score {
+            flex: 1;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .leaderboard-rank {
+            color: #d4af37;
+        }
+
+        /* Challenges Section with Flip Animation */
+        .challenges {
+            padding: 100px 20px;
+            background: #f4f7fa;
+            text-align: center;
+        }
+
+        .challenges h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #004aad;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .challenge-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            perspective: 1000px;
+            opacity: 0;
+            transform: rotateX(20deg);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .challenge-card.visible {
+            opacity: 1;
+            transform: rotateX(0);
+        }
+
+        .challenge-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px) rotateX(0);
+        }
+
+        .challenge-card h3 {
+            color: #004aad;
+            margin-bottom: 15px;
+        }
+
+        .challenge-card p {
+            color: #666;
+        }
+
+        .points {
+            background: #d4af37;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+            opacity: 0;
+            animation: popIn 0.5s ease-out 0.3s forwards;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Sponsors Section with Fade-In Logos */
+        .sponsors {
+            padding: 100px 20px;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .sponsors h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #004aad;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .logo.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer with Fade-In */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: #004aad;
+            color: #fff;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#about">Why Participate</a>
+        <a href="#speakers">Featured Speakers</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#challenges">Challenges</a>
+        <a href="#sponsors">Partners</a>
+    </nav>
+
+    <section id="hero" class="hero">
+        <h1>Real World Case Study 2025</h1>
+        <p>Engage in strategic challenges, demonstrate excellence, and advance your professional journey in a competitive yet collaborative environment.</p>
+        <button class="cta-btn">Register Today</button>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Why Participate?</h2>
+        <p>Enhance your strategic acumen through real-world case studies, network with industry leaders, and compete for prestigious awards and opportunities.</p>
+        <div class="competitive-tease">
+            <div class="tease-card">
+                <h3>Strategic Excellence</h3>
+                <p>Showcase your skills in live scenarios with real-time feedback and rankings.</p>
+            </div>
+            <div class="tease-card">
+                <h3>Professional Mentorship</h3>
+                <p>Gain insights from experts like Mr. Rahul and Mr. Gagandeep Sethi.</p>
+            </div>
+            <div class="tease-card">
+                <h3>Valuable Rewards</h3>
+                <p>Compete for $150K+ in prizes, certifications, and career advancements.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="speakers" class="speakers">
+        <h2>Featured Speakers</h2>
+        <div class="speakers-grid">
+            <div class="speaker-card">
+                <img src="https://via.placeholder.com/150?text=Mr.+Rahul" alt="Mr. Rahul">
+                <h3>Mr. Rahul</h3>
+                <p>Seasoned Strategy Consultant | 20+ Years in Business Analytics | Keynote on Strategic Decision-Making</p>
+            </div>
+            <div class="speaker-card">
+                <img src="https://via.placeholder.com/150?text=Mr.+Gagandeep+Sethi" alt="Mr. Gagandeep Sethi">
+                <h3>Mr. Gagandeep Sethi</h3>
+                <p>Innovation Leader at TechCorp | Specialist in AI Applications | Panel on Emerging Technologies</p>
+            </div>
+            <div class="speaker-card">
+                <img src="https://via.placeholder.com/150?text=Dr.+Elena+Vargas" alt="Dr. Elena Vargas">
+                <h3>Dr. Elena Vargas</h3>
+                <p>Harvard Business Professor | Author of "Case Studies in Strategy" | Workshop on Analytical Frameworks</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="leaderboard" class="leaderboard">
+        <h2>Current Leaderboard</h2>
+        <div class="leaderboard-table">
+            <div class="leaderboard-row">
+                <span class="leaderboard-rank">1</span>
+                <span class="leaderboard-name">Strategic Innovators</span>
+                <span class="leaderboard-score">950 Points</span>
+            </div>
+            <div class="leaderboard-row">
+                <span class="leaderboard-rank">2</span>
+                <span class="leaderboard-name">Analytics Elite</span>
+                <span class="leaderboard-score">920 Points</span>
+            </div>
+            <div class="leaderboard-row">
+                <span class="leaderboard-rank">3</span>
+                <span class="leaderboard-name">Business Pioneers</span>
+                <span class="leaderboard-score">890 Points</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="challenges" class="challenges">
+        <h2>Key Challenges</h2>
+        <div class="challenge-grid">
+            <div class="challenge-card">
+                <h3>AI Market Strategy</h3>
+                <p>Develop a comprehensive plan to expand an AI enterprise globally.</p>
+                <span class="points">500 Points</span>
+            </div>
+            <div class="challenge-card">
+                <h3>Supply Chain Optimization</h3>
+                <p>Address disruptions and enhance efficiency in global operations.</p>
+                <span class="points">400 Points</span>
+            </div>
+            <div class="challenge-card">
+                <h3>Sustainable Business Transformation</h3>
+                <p>Guide a company towards achieving net-zero emissions.</p>
+                <span class="points">600 Points</span>
+            </div>
+            <div class="challenge-card">
+                <h3>FinTech Innovation</h3>
+                <p>Design solutions for underserved financial markets.</p>
+                <span class="points">550 Points</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="sponsors" class="sponsors">
+        <h2>Our Partners</h2>
+        <div class="logo-grid">
+            <img class="logo" src="https://via.placeholder.com/150?text=Partner+1" alt="Partner 1">
+            <img class="logo" src="https://via.placeholder.com/150?text=Partner+2" alt="Partner 2">
+            <img class="logo" src="https://via.placeholder.com/150?text=Partner+3" alt="Partner 3">
+            <img class="logo" src="https://via.placeholder.com/150?text=Partner+4" alt="Partner 4">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Real World Case Study. Advancing Professional Excellence.</p>
+    </footer>
+
+    <script>
+        // Scroll-Based Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Stagger animations for cards
+                    const cards = entry.target.querySelectorAll('.tease-card, .speaker-card, .challenge-card, .logo');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 100); // Stagger delay
+                    });
+                    // Stagger leaderboard rows
+                    const rows = entry.target.querySelectorAll('.leaderboard-row');
+                    rows.forEach((row, index) => {
+                        setTimeout(() => {
+                            row.classList.add('visible');
+                        }, index * 150);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(document.querySelector('.about'));
+        observer.observe(document.querySelector('.speakers'));
+        observer.observe(document.querySelector('.leaderboard'));
+        observer.observe(document.querySelector('.challenges'));
+        observer.observe(document.querySelector('.sponsors'));
+
+        // CTA Button Click
+        document.querySelector('.cta-btn').addEventListener('click', () => {
+            alert('Redirecting to Registration... Elevate Your Career Today.');
+        });
+    </script>
+</body>
+</html>
